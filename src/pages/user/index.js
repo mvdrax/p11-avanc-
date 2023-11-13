@@ -41,7 +41,12 @@ const Profile = () => {
 
 const handleButtonClick = () => {
     setShowForm(true);
-  };
+    const btnEdit = document.querySelector('.edit-button');
+    btnEdit.style.display = "none";
+}
+
+
+
 
  
 
@@ -56,15 +61,22 @@ const handleButtonClick = () => {
 
           <button onClick={handleButtonClick} className="edit-button">Edit Name</button>
           {showForm && (
-        <form onSubmit={nameEdit}>
+        <form className="form2" onSubmit={nameEdit}>
+            <div className="formBtns">
           <label>
-            Input:
+            Entrez le nouveau nom d'utilisateur
             <input type="text" name="username" id="username" value={newUsername.username}
                 onChange={(event) => setNewUsername({ username: event.target.value })}
               />
           </label>
-          <button type="submit">Soumettre</button>
-          <button onClick={() => setShowForm(false)}>Annuler</button>
+          
+          <button type="submit" className="smtBtn">Mettre à jour </button>
+          <button className="smtBtn" onClick={() => 
+            {setShowForm(false); 
+            const btnEdit2 = document.querySelector('.edit-button');
+            btnEdit2.style.display = "flex";}
+            }>Annuler</button>
+          </div>
         </form>
       )}
           </div>

@@ -3,10 +3,22 @@
 import React from "react";
 import Logo from "../assets/argentBankLogo.webp";
 import { Link } from "react-router-dom";
+import { useSelector, useDispatch } from 'react-redux';
 
 
 
 const Header = () => {
+
+  const user = useSelector((state) => state.user);
+  const dispatch = useDispatch();
+
+  const handleLogout = () => {
+  
+      dispatch({ type: "user/logout" });
+      
+  };
+
+
     return (
         <nav className="main-nav">
       <div className="main-nav-logo">
@@ -19,12 +31,22 @@ const Header = () => {
         <h1 className="sr-only">Argent Bank</h1>
         </Link>
       </div>
-      <div>
-      <Link to={"/signin"}>
-          <i className="fa fa-user-circle"></i>
-          Sign In
-        </Link>
-      </div>
+      {user.token ? (
+                    
+                    <>
+                    <Link to={"/index.html"} onClick={handleLogout} className="main-nav-item" >
+                    {user.userName} <span></span>
+                    <i className="fa fa-sign-out"></i>
+                    Log Out
+                    </Link>
+                    </>
+                ) : (
+                    <Link to={"/signin"} className="main-nav-item" >
+                    <i className="fa fa-user-circle"></i>
+                    Sign In
+                    </Link>         
+                )}
+      
     </nav>
     );
 };

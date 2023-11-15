@@ -24,7 +24,7 @@ paths:
         401:
           description: "Unauthorized - Missing or invalid API key"
       security:
-        - apiKey: []
+        - Bearer : []
 
     post:
       summary: "Add additional information to a transaction"
@@ -42,7 +42,7 @@ paths:
         401:
           description: "Unauthorized - Missing or invalid API key"
 
-  /transactions/{transactionId}:
+  /accountInfos/{transactionId}:
     get:
       summary: "Get details of a transaction"
       description: "Retrieves additional details of a transaction by specifying its ID."
@@ -62,7 +62,7 @@ paths:
         404:
           description: "Transaction not found"
       security:
-        - apiKey: []
+        - Bearer: []
 
     put:
       summary: "Modify details of a transaction"
@@ -87,7 +87,7 @@ paths:
         404:
           description: "Transaction not found"
       security:
-        - apiKey: []
+        - Bearer: []
 
     delete:
       summary: "Delete a transaction"
@@ -106,7 +106,13 @@ paths:
         404:
           description: "Transaction not found"
       security:
-        - apiKey: []
+        - Bearer: []
+        
+securityDefinitions:
+  Bearer :
+    type: apiKey
+    name: Authorization
+    in: header
 
 definitions:
   Transaction:

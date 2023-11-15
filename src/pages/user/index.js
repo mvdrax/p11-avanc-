@@ -106,18 +106,28 @@ RedirectOnRefresh ();
         <form className="form2" onSubmit={nameEdit}>
             <div className="formBtns">
           <label>
-            Entrez le nouveau nom d'utilisateur
+            <div className="disabledNamesInput">
+              <label htmlFor="firstName">First Name </label>
+              <input type="text" name="firstname" id="firstname" value={user.firstName} disabled />
+            </div>
+
+            <div className="disabledNamesInput">
+              <label htmlFor="lastName">Last Name </label>
+              <input type="text" name="lastname" id="lastname" value={user.lastName} disabled />
+            </div>
+            Please type your new username.
             <input type="text" name="username" id="username" value={newUsername.username}
                 onChange={(event) => setNewUsername({ username: event.target.value })}
               />
           </label>
-          
-          <button type="submit" className="smtBtn">Mettre à jour </button>
+          <div className="formSmtBtns"> 
+          <button type="submit" className="smtBtn">Update </button>
           <button className="smtBtn" onClick={() => 
             {setShowForm(false); 
             const btnEdit2 = document.querySelector('.edit-button');
             btnEdit2.style.display = "flex";}
-            }>Annuler</button>
+            }>Cancel</button>
+          </div> 
           </div>
         </form>
       )}
